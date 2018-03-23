@@ -52,7 +52,7 @@ int main()
               fac=x*fac;
               
         
-         printf("El factorial es %d", shared_stuff->some_int[0],fac);
+         printf("El factorial es %d\n ", shared_stuff->some_int[0],fac);
          sleep( rand() % 4 );         /* espera por un tiempo aleatorio para que el proces productor espere */
          shared_stuff->written_by_you = 0;
       if (shared_stuff->some_int[0] == -1) {
