@@ -19,7 +19,7 @@ int main()
    int running = 1;
    void *shared_memory = (void *)0;
    struct shared_use_st *shared_stuff;
-   int shmid,n,x,fac;
+   int shmid,n,fac;
                 // se define semilla para generacion de numeros aleatorios
    srand((unsigned int)getpid());
 
@@ -41,18 +41,20 @@ int main()
                     // hacemos que el area de memoria compartida tenga la estructura de "shared_stuff"
    shared_stuff = (struct shared_use_st *) shared_memory;
                    // shared_stuff se define "vacio"
-   n=shared_stuff->some_int [0];
+   
                   // ciclo hasta que el proceso lea del area de memoria compartida el texto "fin"
    while (running) {
       if (shared_stuff->written_by_you) {
+      
+      n=shared_stuff->some_int [0];
 
           fac=1;
-             for(x=1; x<=n; x++)
+             for(int x=1; x<=n; x++){
           
               fac=x*fac;
               
-        
-         printf("El factorial es %d\n ", shared_stuff->some_int[0],fac);
+           }
+         printf("El factorial es %d\n ", fac);
          sleep( rand() % 4 );         /* espera por un tiempo aleatorio para que el proces productor espere */
          shared_stuff->written_by_you = 0;
       if (shared_stuff->some_int[0] == -1) {
