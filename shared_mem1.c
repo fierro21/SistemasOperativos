@@ -47,8 +47,10 @@ int main()
       if (shared_stuff->written_by_you) {
       
       n=shared_stuff->some_int [0];
-
-          fac=1;
+         if(n==-1){
+            break;
+                 }
+          else fac=1;
              for(int x=1; x<=n; x++){
           
               fac=x*fac;
@@ -58,7 +60,7 @@ int main()
          sleep( rand() % 4 );         /* espera por un tiempo aleatorio para que el proces productor espere */
          shared_stuff->written_by_you = 0;
       if (shared_stuff->some_int[0] == -1) {
-	   
+	    
         running = 0;
        }  
       }
