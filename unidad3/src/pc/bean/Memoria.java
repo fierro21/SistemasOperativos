@@ -6,14 +6,14 @@ public class Memoria implements Buffer {
 	private int n;
 
 	@Override
-	public void setValor(int n) {
+	public synchronized void setValor(int n) {
 		// TODO Auto-generated method stub
 		this.n= n;
 		notify();
 	}
 
 	@Override
-	public int getValor() {
+	public synchronized int getValor() {
 		// TODO Auto-generated method stub
 		try {
 			wait();
